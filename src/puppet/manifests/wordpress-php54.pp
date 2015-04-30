@@ -12,6 +12,7 @@ apt::source { 'wheezy_backports':
 
 package { [
   'git',
+  'php5-cli',
   'php5-curl',
   'php5-gd',
   'php5-imagick',
@@ -24,26 +25,6 @@ apt::force { 'nodejs-legacy':
   release => 'wheezy-backports',
   require => Class['apt']
 }
-exec { 'download-npm':
-  command => '/usr/bin/curl https://www.npmjs.com/install.sh > /tmp/npm_install.sh',
-  creates => '/tmp/npm_install.sh',
-  require => Apt::Force['nodejs-legacy'],
-}
-exec { 'install-npm':
-  command => '/bin/bash /tmp/npm_install.sh',
-  cwd => '/tmp',
-  environment => 'clean=no',
-  creates => '/usr/bin/npm',
-  require => Exec['download-npm']
-}
-exec { 'grunt-cli':
-  command => '/usr/bin/npm install -g grunt-cli',
-  creates => '/usr/bin/grunt',
-  require => Exec['install-npm']
-}
-
-include pear
-pear::package { "PEAR": }
 
 include apache::mod::suphp
 

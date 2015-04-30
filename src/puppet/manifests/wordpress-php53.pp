@@ -3,32 +3,16 @@ class { 'apache': }
 
 include apt
 
-apt::ppa { 'ppa:chris-lea/node.js': }
-
 package { [
-  'subversion',
   'git',
-  'nodejs',
+  'php5-cli',
   'php5-curl',
   'php5-gd',
   'php5-imagick',
   'php5-mcrypt',
   'php5-xdebug'
 ]:
-  ensure => latest,
-  require => Apt::Ppa['ppa:chris-lea/node.js']
-}
-
-exec { 'grunt-cli':
-  command => '/usr/bin/npm install -g grunt-cli',
-  creates => '/usr/bin/grunt',
-  require => Package['nodejs']
-}
-
-include pear
-pear::package { "PEAR": }
-pear::package { "PHPUnit":
-  repository => 'pear.phpunit.de'
+  ensure => latest
 }
 
 include apache::mod::suphp
