@@ -38,27 +38,31 @@ apache::mod { 'rewrite': }
 apache::vhost { 'wordpress':
   servername       => $::fqdn,
   port             => '80',
-  docroot          => '/vagrant/wordpress/build',
+  docroot          => '/vagrant/web',
   docroot_owner    => 'vagrant',
   docroot_group    => 'vagrant',
+  override         => 'All',
   suphp_addhandler => 'application/x-httpd-suphp',
   suphp_engine     => 'on',
   suphp_configpath => '/etc/php5/cgi',
-  custom_fragment  => 'RewriteLogLevel 2
+  custom_fragment  => 'EnableSendfile off
+                       RewriteLogLevel 2
                        RewriteLog /var/log/apache2/rewrite.log'
 }
 
 apache::vhost { 'wordpress-ssl':
   servername       => $::fqdn,
   port             => '443',
-  docroot          => '/vagrant/wordpress/build',
+  docroot          => '/vagrant/web',
   docroot_owner    => 'vagrant',
   docroot_group    => 'vagrant',
+  override         => 'all',
   ssl              => true,
   suphp_addhandler => 'application/x-httpd-suphp',
   suphp_engine     => 'on',
   suphp_configpath => '/etc/php5/cgi',
-  custom_fragment  => 'RewriteLogLevel 2
+  custom_fragment  => 'EnableSendfile off
+                       RewriteLogLevel 2
                        RewriteLog /var/log/apache2/rewrite-ssl.log'
 }
 
@@ -70,7 +74,7 @@ class { 'mysql::bindings':
   php_enable => 'true',
 }
 
-mysql::db { ['wordpress', 'wordpress-tests']:
+mysql::db { ['wordpress']:
   ensure   => present,
   charset  => 'utf8',
   user     => 'wordpress',
