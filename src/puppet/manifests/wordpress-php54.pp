@@ -6,8 +6,7 @@ include apt
 apt::source { 'wheezy_backports':
   location    => 'http://ftp.debian.org/debian',
   release     => 'wheezy-backports',
-  repos       => 'main',
-  include_src => false,
+  repos       => 'main'
 }
 
 package { [
@@ -20,11 +19,6 @@ package { [
   'php5-xdebug',
   'php5-mysqlnd'
 ]: ensure => latest }
-
-apt::force { 'nodejs-legacy':
-  release => 'wheezy-backports',
-  require => Class['apt']
-}
 
 include apache::mod::suphp
 

@@ -1,0 +1,23 @@
+# 
+
+# deb cdrom:[Debian GNU/Linux 7.4.0 _Wheezy_ - Official amd64 NETINST Binary-1 20140208-13:45]/ wheezy main
+
+#deb cdrom:[Debian GNU/Linux 7.4.0 _Wheezy_ - Official amd64 NETINST Binary-1 20140208-13:45]/ wheezy main
+
+deb http://http.us.debian.org/debian wheezy main
+deb-src http://http.us.debian.org/debian wheezy main
+
+deb http://security.debian.org/ wheezy/updates main
+deb-src http://security.debian.org/ wheezy/updates main
+
+# wheezy-updates, previously known as 'volatile'
+deb http://http.us.debian.org/debian wheezy-updates main
+deb-src http://http.us.debian.org/debian wheezy-updates main
+
+# http://www.dotdeb.org/instructions/
+deb http://packages.dotdeb.org wheezy all
+deb-src http://packages.dotdeb.org wheezy all
+
+# http://stackoverflow.com/a/25089430
+# http://backports.debian.org/Instructions/#index2h2
+deb http://http.debian.net/debian wheezy-backports main
