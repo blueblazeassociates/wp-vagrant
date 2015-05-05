@@ -36,7 +36,7 @@ Vagrant.configure("2") do |config|
 #
 #  config.vm.define 'WP.PHP52', autostart: false do |node|
 #    node.vm.box = 'tierra/wordpress-php52'
-#    node.vm.hostname = 'wordpress-php52.local'
+#    node.vm.hostname = 'wordpress-php52.vagrant'
 #    node.vm.network :private_network, ip: '192.168.255.52'
 #
 #    node.vm.provider :virtualbox do |vb|
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
 #
 #  config.vm.define 'WP.PHP53', autostart: false do |node|
 #    node.vm.box = 'puppetlabs/ubuntu-12.04-64-puppet'
-#    node.vm.hostname = 'wordpress-php53.local'
+#    node.vm.hostname = 'wordpress-php53.vagrant'
 #    node.vm.network :private_network, ip: '192.168.255.53'
 #
 #    node.vm.provider :virtualbox do |vb|
