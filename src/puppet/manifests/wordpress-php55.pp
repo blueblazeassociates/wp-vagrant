@@ -60,7 +60,8 @@ class { 'mysql::bindings':
 
 mysql::db { ['wordpress']:
   ensure   => present,
-  charset  => 'utf8',
+  charset  => 'utf8mb4',
+  collate  => 'utf8mb4_unicode_ci',
   user     => 'wordpress',
   password => 'wordpress',
   host     => 'localhost',

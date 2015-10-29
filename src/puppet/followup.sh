@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Install VIM.
+sudo apt-get -qq -y install vim vim-rt
+
 # Update Git to newer version.
 # http://stackoverflow.com/a/25089430
 # http://backports.debian.org/Instructions/#index2h2
@@ -10,7 +13,10 @@ sudo apt-get -qq -y -t wheezy-backports install "git"
 sudo chown -R www-data:www-data /usr/share/phpmyadmin
 
 # Copy php executable to php-cli. If all scripts use php-cli, this helps normalize commands across environments (Bluehost)
-sudo ln -s /usr/bin/php5 /usr/bin/php-cli
+if ! [ -e "/usr/bin/php-cli" ]
+then
+ sudo ln -s /usr/bin/php5 /usr/bin/php-cli
+fi
 
 # Add custom config for suphp.
 sudo rm /etc/apache2/mods-available/suphp.conf
@@ -22,6 +28,11 @@ cp /vagrant/src/puppet/files/etc_php5_cgi_php.ini /etc/php5/cgi/php.ini
 
 # Replace php5-mysql with php5-mysqlnd
 sudo apt-get install php5-mysqlnd -y
+
+# Place a phpinfo diagnostic in /var/www.
+sudo cp /vagrant/src/puppet/files/var_www_phpinfo.php /var/www/phpinfo.php
+sudo chown vagrant:vagrant /var/www/index.html
+sudo chown vagrant:vagrant /var/www/phpinfo.php
 
 # Restart apache so it will take the above changes.
 sudo service apache2 restart

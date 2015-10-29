@@ -1,0 +1,17 @@
+##
+# The following settings are used to remove folders/files from deployment when using 'git archive'.
+##
+
+# Git folders/files
+/.gitattributes export-ignore
+/.gitignore export-ignore
+
+# Eclipse folders/files.
+/.settings export-ignore
+/.buildpath export-ignore
+/.project export-ignore
+
+# Vagrant folders/files
+/.vagrant export-ignore
+/Vagrantfile export-ignore
+/src/puppet export-ignore

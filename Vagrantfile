@@ -14,7 +14,10 @@ Vagrant.configure("2") do |config|
     node.vm.provider :virtualbox do |vb|
       vb.customize [
         'modifyvm', :id,
-        '--memory', '512',
+        '--paravirtprovider', 'kvm',
+        '--memory', '1024',
+        '--cpus', '1',
+        '--cpuexecutioncap', '100',
       ]
       vb.customize [
         'guestproperty', 'set', :id,
@@ -42,7 +45,10 @@ Vagrant.configure("2") do |config|
 #    node.vm.provider :virtualbox do |vb|
 #      vb.customize [
 #        'modifyvm', :id,
-#        '--memory', '512',
+#        '--paravirtprovider', 'kvm',
+#        '--memory', '1024',
+#        '--cpus', '1',
+#        '--cpuexecutioncap', '100',
 #      ]
 #    end
 #  end
@@ -58,7 +64,10 @@ Vagrant.configure("2") do |config|
 #    node.vm.provider :virtualbox do |vb|
 #      vb.customize [
 #        'modifyvm', :id,
-#        '--memory', '512',
+#        '--paravirtprovider', 'kvm',
+#        '--memory', '1024',
+#        '--cpus', '1',
+#        '--cpuexecutioncap', '100',
 #      ]
 #    end
 #
@@ -81,7 +90,10 @@ Vagrant.configure("2") do |config|
 #    node.vm.provider :virtualbox do |vb|
 #      vb.customize [
 #        'modifyvm', :id,
-#        '--memory', '512',
+#        '--paravirtprovider', 'kvm',
+#        '--memory', '1024',
+#        '--cpus', '1',
+#        '--cpuexecutioncap', '100',
 #      ]
 #    end
 #

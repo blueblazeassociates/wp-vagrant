@@ -65,7 +65,8 @@ class { 'mysql::bindings':
 
 mysql::db { ['wordpress']:
   ensure   => present,
-  charset  => 'utf8',
+  charset  => 'utf8mb4',
+  collate  => 'utf8mb4_unicode_ci',
   user     => 'wordpress',
   password => 'wordpress',
   host     => 'localhost',
@@ -93,12 +94,12 @@ include phpmyadmin
 
 # Thanks to http://ryansechrest.com/2014/08/wordpress-establish-secure-connection-wordpress-org/
 host { "api.wordpress.org":
-  ip => "66.155.40.202",
+  ip => "66.155.40.249",
 }
 
 # Add Envato update service to hosts file.
 host { "marketplace.envato.com":
-  ip => "23.253.198.39",
+  ip => "23.209.92.106",
 }
 
 # Add ACF update service to hosts file.
