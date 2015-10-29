@@ -30,6 +30,7 @@ Vagrant.configure("2") do |config|
       puppet.facter = { 'fqdn' => node.vm.hostname }
       puppet.manifests_path = "src/puppet/manifests"
       puppet.manifest_file  = "wordpress-php54.pp"
+      puppet.options = "--hiera_config /etc/hiera.yaml"
     end
     node.vm.provision :shell, :path => "src/puppet/followup.sh"
   end
@@ -76,6 +77,7 @@ Vagrant.configure("2") do |config|
 #      puppet.facter = { 'fqdn' => node.vm.hostname }
 #      puppet.manifests_path = "src/puppet/manifests"
 #      puppet.manifest_file  = "wordpress-php53.pp"
+#      puppet.options = "--hiera_config /etc/hiera.yaml"
 #    end
 #  end
 
@@ -102,6 +104,7 @@ Vagrant.configure("2") do |config|
 #      puppet.facter = { 'fqdn' => node.vm.hostname }
 #      puppet.manifests_path = "src/puppet/manifests"
 #      puppet.manifest_file  = "wordpress-php55.pp"
+#      puppet.options        = "--hiera_config /etc/hiera.yaml"
 #    end
 #  end
 

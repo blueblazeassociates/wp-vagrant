@@ -41,7 +41,7 @@ fi
 
 # Install PHPUnit.
 if [ ! -f /usr/local/bin/phpunit ]; then
-	curl --silent --show-error --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit-4.4.2.phar
+	curl --silent --show-error --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit-4.8.5.phar
 fi
 
 chmod +x /usr/local/bin/phpunit

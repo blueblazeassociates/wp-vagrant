@@ -10,6 +10,7 @@ apt::source { 'wheezy_backports':
 }
 
 package { [
+  'curl',
   'git',
   'php5-cli',
   'php5-curl',
@@ -30,10 +31,10 @@ apache::vhost { 'wordpress':
   docroot          => '/vagrant/web',
   docroot_owner    => 'vagrant',
   docroot_group    => 'vagrant',
-  override         => 'All',
   suphp_addhandler => 'application/x-httpd-suphp',
   suphp_engine     => 'on',
   suphp_configpath => '/etc/php5/cgi',
+  override         => 'All',
   custom_fragment  => 'EnableSendfile off
                        RewriteLogLevel 2
                        RewriteLog /var/log/apache2/rewrite.log'
@@ -45,11 +46,11 @@ apache::vhost { 'wordpress-ssl':
   docroot          => '/vagrant/web',
   docroot_owner    => 'vagrant',
   docroot_group    => 'vagrant',
-  override         => 'all',
   ssl              => true,
   suphp_addhandler => 'application/x-httpd-suphp',
   suphp_engine     => 'on',
   suphp_configpath => '/etc/php5/cgi',
+  override         => 'All',
   custom_fragment  => 'EnableSendfile off
                        RewriteLogLevel 2
                        RewriteLog /var/log/apache2/rewrite-ssl.log'
