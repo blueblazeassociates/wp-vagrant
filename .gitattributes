@@ -13,5 +13,3 @@
 
 # Vagrant folders/files
 /.vagrant export-ignore
-/Vagrantfile export-ignore
-/src/puppet export-ignore
