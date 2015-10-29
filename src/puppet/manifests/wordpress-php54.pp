@@ -35,9 +35,9 @@ apache::vhost { 'wordpress':
   suphp_engine     => 'on',
   suphp_configpath => '/etc/php5/cgi',
   override         => 'All',
-  custom_fragment  => 'EnableSendfile off
-                       RewriteLogLevel 2
-                       RewriteLog /var/log/apache2/rewrite.log'
+  custom_fragment  => 'RewriteLogLevel 2
+                       RewriteLog /var/log/apache2/rewrite.log
+                       EnableSendfile off'
 }
 
 apache::vhost { 'wordpress-ssl':
@@ -51,9 +51,9 @@ apache::vhost { 'wordpress-ssl':
   suphp_engine     => 'on',
   suphp_configpath => '/etc/php5/cgi',
   override         => 'All',
-  custom_fragment  => 'EnableSendfile off
-                       RewriteLogLevel 2
-                       RewriteLog /var/log/apache2/rewrite-ssl.log'
+  custom_fragment  => 'RewriteLogLevel 2
+                       RewriteLog /var/log/apache2/rewrite-ssl.log
+                       EnableSendfile off'
 }
 
 class { 'mysql::server':
